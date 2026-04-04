@@ -15,7 +15,7 @@ def keep_alive():
     t.start()
 
 # 2. Aapka Bot Setup
-API_TOKEN = '8743125919:AAFnYbZ_R61wKphWNZXVL60UJA' # Aapka Token
+API_TOKEN = os.environ.get('BOT_TOKEN')
 bot = telebot.TeleBot(API_TOKEN)
 
 results_data = {
