@@ -43,7 +43,7 @@ def process_result(message):
     else:
         bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.")
 
-if _import os
+import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
