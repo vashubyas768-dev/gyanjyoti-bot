@@ -43,6 +43,9 @@ def process_result(message):
     else:
         bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.")
 
+if _import os
+
 if __name__ == "__main__":
-    keep_alive() 
-    bot.infinity_polling()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
