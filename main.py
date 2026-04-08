@@ -41,16 +41,14 @@ def process_result(message):
         res = results_data[roll]
         bot.send_message(message.chat.id, f"🎓 *Result Found*\n👤 Name: {res['name']}\n📚 Class: {res['class']}", parse_mode='Markdown')
     else:
-        bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.")
-
-  import threading
+        bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.") import threading
 import os
 
 def run_flask():
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
 
-if __name__ == "__main__":
+if__name__=="__main__":
     t = threading.Thread(target=run_flask)
     t.daemon = True
     t.start()
