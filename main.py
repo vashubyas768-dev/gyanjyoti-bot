@@ -43,8 +43,6 @@ def process_result(message):
     else:
         bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.")
 
-import os
-
  import threading
 import os
 
@@ -57,6 +55,6 @@ if __name__ == "__main__":
     t.daemon = True
     t.start()
     print("Gyanjyoti Bot is starting...")
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)   
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)
     
 
