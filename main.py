@@ -44,22 +44,19 @@ def process_result(message):
         bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.")
 
 import os
-    import threading
 
-# Flask ko alag se chalane ke liye function
+ import threading
+import os
+
 def run_flask():
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 if __name__ == "__main__":
-    # 1. Flask server ko background mein chalu karein
     t = threading.Thread(target=run_flask)
     t.daemon = True
     t.start()
-
-    # 2. Bot ko main program mein chalu karein
     print("Gyanjyoti Bot is starting...")
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)
-
-    
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)   
     
 
