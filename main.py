@@ -1,6 +1,6 @@
-importos
-importtelebot
-fromflaskimportFlask
+import os
+import telebot
+from flaskimport Flask
 fromthreadingimportThread
 
 app = Flask(__name__)
