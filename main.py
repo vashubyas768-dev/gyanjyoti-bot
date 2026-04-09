@@ -1,7 +1,7 @@
 import os
 import telebot
 from flaskimport Flask
-fromthreadingimportThread
+from threading import Thread
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def keep_alive():
     t = Thread(target=run)
     t.start()
 
-API_TOKEN = "APNA_BOT_TOKEN_YAHAN_DALEIN"
+API_TOKEN = "                          "
 bot = telebot.TeleBot(API_TOKEN)
 
 results_data = {
