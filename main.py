@@ -1,6 +1,6 @@
 import os
 import telebot
-from flaskimport Flask
+from flask import Flask
 from threading import Thread
 
 app = Flask(__name__)
