@@ -1,21 +1,22 @@
 import os
 import telebot
-from telebot import types
 from flask import Flask
 from threading import Thread
 
-# 1. Flask Server (Bot ko 24/7 jagaye rakhne ke liye)
-app = Flask('')
-@app.route('/')
-def home(): return "Gyanjyoti Bot is Awake!"
+app = Flask(__name__)
 
-def run(): app.run(host='0.0.0.0', port=8080)
+@app.route('/')
+def home():
+    return "Gyanjyoti Bot is Running"
+
+def run():
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
+
 def keep_alive():
     t = Thread(target=run)
     t.start()
 
-# 2. Aapka Bot Setup
-API_TOKEN = os.environ.get('BOT_TOKEN')
+API_TOKEN = "APNA_BOT_TOKEN_YAHAN_DALEIN"
 bot = telebot.TeleBot(API_TOKEN)
 
 results_data = {
@@ -25,34 +26,22 @@ results_data = {
 }
 
 @bot.message_handler(commands=['start'])
-def send_welcome(message):
-    markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
-    markup.add('📝 Homework', '📊 Results', '📢 Notice', '📞 Contact')
-    bot.reply_to(message, "Gyanjyoti Smart School Bot mein swagat hai!", reply_markup=markup)
+def start_message(message):
+    bot.reply_to(message, "Namaste! Roll Number bhejiye.")
 
-@bot.message_handler(func=lambda m: m.text == '📊 Results')
-def ask_roll(message):
-    msg = bot.send_message(message.chat.id, "Kripya Roll Number bhejiye:")
-    bot.register_next_step_handler(msg, process_result)
-
-def process_result(message):
-    roll = message.text
+@bot.message_handler(func=lambda m: True)
+def handle_message(message):
+    roll = message.text.strip()
     if roll in results_data:
-        res = results_data[roll]
-        bot.send_message(message.chat.id, f"🎓 *Result Found*\n👤 Name: {res['name']}\n📚 Class: {res['class']}", parse_mode='Markdown')
+        s = results_data[roll]
+        bot.reply_to(
+            message,
+            f"Result Mil Gaya\nNaam: {s['name']}\nClass: {s['class']}"
+        )
     else:
-        bot.send_message(message.chat.id, "❌ Maaf kijiye, ye roll number nahi mila.") import threading
-import os
+        bot.reply_to(message, "Roll Number nahi mila")
 
-def run_flask():
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
-
-if__name__=="__main__":
-    t = threading.Thread(target=run_flask)
-    t.daemon = True
-    t.start()
-    print("Gyanjyoti Bot is starting...")
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)
-    
-
+if __name__ == "__main__":
+    keep_alive()
+    print("Bot Started")
+    bot.infinity_polling()
