@@ -1,7 +1,7 @@
-import os
-import telebot
-from flask import Flask
-from threading import Thread
+importos
+importtelebot
+fromflaskimportFlask
+fromthreadingimportThread
 
 app = Flask(__name__)
 
