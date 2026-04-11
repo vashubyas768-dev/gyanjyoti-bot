@@ -18,7 +18,7 @@ def keep_alive():
     t.start()
 
 # Aapka Sahi Token
-API_TOKEN = "8743125919:AAFnYbZ_R6lwKphWNZXVL60UJAt7AM9hGxo"
+API_TOKEN ="8743125919:AAFnYbZ_R6lwKphWNZXVL60UJAt7AM9hGxo"
 bot = telebot.TeleBot(API_TOKEN)
 
 # Student Data
