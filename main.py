@@ -14,7 +14,7 @@ students_data = {
 }
 
 # --- Welcome Message (Bilingual) ---
-@bot.message_id_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
     itembtn1 = types.KeyboardButton('📚 Homework / ঘৰৰ কাম')
