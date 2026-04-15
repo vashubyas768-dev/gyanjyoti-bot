@@ -41,10 +41,10 @@ def process_roll(message):
     if roll in students_data:
         student = students_data[roll]
         res = (
-            f"✅ *Result Found!*\n\n"
-            f"👤 Name: {student['name']}\n"
-            f"🏫 School: {student['school']}\n"
-            f"📝 Status: {student['result']}\n\n"
+            f"✅*Result Found!*\n\n"
+            f"👤Name: {student['name']}\n"
+            f"🏫School: {student['school']}\n"
+            f"📝Status: {student['result']}\n\n"
             f"Powered by Vashu AI Labs, Sivasagar"
         )
         bot.send_message(message.chat.id, res, parse_mode='Markdown')
