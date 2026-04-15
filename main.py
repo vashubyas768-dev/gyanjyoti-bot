@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 
 # Yahan apna wahi purana API TOKEN daliye
-API_TOKEN ='8743125919:AAFnYbZ_R6lwKphWNZXVL60UJAt7AM9hGxo'
+API_TOKEN ='8676020356:AAHpj9OihPgLyCn2-F3V_qnayutIRw6EQH0'
 bot = telebot.TeleBot(API_TOKEN)
 
 # --- Real Data (Sivasagar School Sample) ---
