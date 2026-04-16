@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-API_TOKEN = '8676020356:AAHpj90ihPgLyCn2-F3V_6D0K-9Xxxx' # Apna pura token yahan rakhein
+API_TOKEN ='8676020356:AAGSYUgI6WXY_QSWNd3idu2hd1Rv6hH9uIs' 
 bot = telebot.TeleBot(API_TOKEN)
 
 students_data = {
