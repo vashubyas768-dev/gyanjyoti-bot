@@ -10,8 +10,8 @@ def hello():
     return "Bot is running!"
 
 # Is line mein apna naya token quotes ke andar bilkul sahi se likhiye
-API_TOKEN ='8676020356:AAGSYUgI6WXY_QSWNd3idu2hd1Rv6hH9uIs'
-             
+API_TOKEN ='8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
+    
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
