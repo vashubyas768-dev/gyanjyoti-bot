@@ -10,7 +10,7 @@ def hello():
     return "Gyanjyoti Bot is Running!"
 
 # Naya Token yahan sahi se daliye
-API_TOKEN ='8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
+API_TOKEN='8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
