@@ -27,7 +27,7 @@ elif "Notice" in message.text:
         bot.reply_to(message, "📢 Kal school mein chutti hai.")
 elif "Contact" in message.text:
         bot.reply_to(message, "📞 Sivasagar Office: 9876543210")
- else:
+else:
         bot.reply_to(message, "Main aapki kya madad kar sakta hoon?")
 
 def run_bot():
