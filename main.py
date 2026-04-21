@@ -20,15 +20,14 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def handle_all_messages(message):
-    if "Homework" in message.text:
-        bot.reply_to(message, "📚 Aaj ka homework: Math Exercise 2.1 solve karein.")
-    elif "Results" in message.text:
+if "Homework" in message.text:
+        bot.reply_to(message, "📚 Aaj ka homework: Math Exercise 2.1 solve karein.") elif "Results" in message.text:
         bot.reply_to(message, "📊 Apna Roll Number likh kar bhejiye.")
-    elif "Notice" in message.text:
+elif "Notice" in message.text:
         bot.reply_to(message, "📢 Kal school mein chutti hai.")
-    elif "Contact" in message.text:
+elif "Contact" in message.text:
         bot.reply_to(message, "📞 Sivasagar Office: 9876543210")
-    else:
+ else:
         bot.reply_to(message, "Main aapki kya madad kar sakta hoon?")
 
 def run_bot():
