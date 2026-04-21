@@ -9,13 +9,13 @@ app = Flask(__name__)
 def hello():
     return "Gyanjyoti Bot is Running!"
 
-# Sahi API Token
-API_TOKEN ='8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
+# Sahi Token jo BotFather ne diya tha
+API_TOKEN = '8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Namaskar Vashu Sir! Gyanjyoti AI Tutor ab active hai. Main reply dene ke liye taiyaar hoon!")
+    bot.reply_to(message, "Namaskar Vashu Sir! Gyanjyoti AI Tutor active hai.")
 
 @bot.message_handler(func=lambda message: True)
 def handle_all_messages(message):
@@ -26,7 +26,7 @@ def handle_all_messages(message):
     elif "Notice" in message.text:
         bot.reply_to(message, "📢 Kal school mein chutti hai.")
     elif "Contact" in message.text:
-        bot.reply_to(message, "📞 Sivasagar Office: +91-XXXX-XXXXXX")
+        bot.reply_to(message, "📞 Sivasagar Office: 9876543210")
     else:
         bot.reply_to(message, "Main aapki kya madad kar sakta hoon?")
 
