@@ -1,30 +1,57 @@
 import telebot
 from flask import Flask, request
 import os
-import requests
 
-# 1. Bot Setup
+# 1. Setup
 API_TOKEN = '8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
 bot = telebot.TeleBot(API_TOKEN)
 app = Flask(__name__)
 
-# 2. Handlers (Direct Answers & Solutions)
+# 2. Keyboards (Buttons)
+def main_keyboard():
+    markup = telebot.types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+    btn1 = telebot.types.KeyboardButton('📝 Homework')
+    btn2 = telebot.types.KeyboardButton('📊 Results')
+    btn3 = telebot.types.KeyboardButton('👨‍🏫 Staff Info')
+    btn4 = telebot.types.KeyboardButton('📞 Contact')
+    markup.add(btn1, btn2, btn3, btn4)
+    return markup
+
+# 3. Handlers
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "✅ Gyanjyoti AI Tutor Active Hai!\n\nMain Sivasagar ke schools ke liye taiyar hoon. Aap 'Homework' ya 'Results' button check kar sakte hain.")
+    bot.send_message(
+        message.chat.id, 
+        "✅ Gyanjyoti AI Tutor Active Hai!\n\nNiche diye gaye buttons se jankari lein.", 
+        reply_markup=main_keyboard()
+    )
 
 @bot.message_handler(func=lambda message: True)
-def handle_all(message):
-    # User Correction: Providing direct solutions alongside explanations
-    if "Homework" in message.text:
-        bot.reply_to(message, "📚 Homework Section: Aapka homework portal update ho gaya hai. Yahan direct solutions aur methods dono milenge.")
-    elif "Results" in message.text:
-        bot.reply_to(message, "📊 Results: Digital marksheets taiyar ho rahi hain.")
-    else:
-        bot.reply_to(message, "Aapka message mil gaya! Main jald hi step-by-step reply karunga.")
+def handle_messages(message):
+    if message.text == '👨‍🏫 Staff Info':
+        # Aapki di hui updated list yahan hai:
+        staff_details = (
+            "🏫 **Gyanjyoti School Staff Details:**\n\n"
+            "👤 **Principal:** Devajani Saikia Gogoi\n"
+            "🎓 **Incharge:** Dimpi Chetia\n"
+            "📖 **Teachers:**\n"
+            "• Momi Neog\n"
+            "• Himasree Gogoi\n\n"
+            "📍 **Location:** Nazira, Sivasagar, Assam"
+        )
+        bot.reply_to(message, staff_details)
+    
+    elif message.text == '📝 Homework':
+        bot.reply_to(message, "📚 Homework Section: Portal update ho gaya hai.")
+        
+    elif message.text == '📊 Results':
+        bot.reply_to(message, "📊 Results: Digital marksheets jald hi upload hongi.")
+        
+    elif message.text == '📞 Contact':
+        bot.reply_to(message, "📞 Contact: Aap school office mein sampark kar sakte hain.")
 
-# 3. Webhook Engine with Auto-Cleaner
-@app.route('/' + API_TOKEN, methods=['POST'])
+# 4. Webhook Receiver
+@app.route('/8676020356:AAfz-kraG7h2c8_S6yXp3G6L6P78J4_U5s8', methods=['POST'])
 def getMessage():
     json_string = request.get_data().decode('utf-8')
     update = telebot.types.Update.de_json(json_string)
@@ -32,14 +59,9 @@ def getMessage():
     return "!", 200
 
 @app.route("/")
-def webhook_check():
-    # Forceful Webhook Registration & Cleaning purane pending messages
-    webhook_url = f"https://gyanjyoti-smart-bot-final.onrender.com/{API_TOKEN}"
-    bot.remove_webhook()
-    bot.set_webhook(url=webhook_url)
-    return "<h1>Gyanjyoti Bot: Connection Forced & Running! ✅</h1>", 200
+def webhook():
+    return "<h1>Gyanjyoti Bot: Staff List Updated! ✅</h1>", 200
 
-# 4. Running the server
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
