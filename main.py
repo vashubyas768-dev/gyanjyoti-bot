@@ -4,7 +4,7 @@ import os
 import requests
 
 # 1. Setup - Bilkul sahi Token
-API_TOKEN = '8676020356:AAFz-kraG7h2cltotemx63KVD8RCFPNltO8'
+API_TOKEN = '8653944194:AAFl578Ww7LQkN5_YH2GGLUsb3awAR0ol18'
 
                             
 RENDER_URL = 'https://gyanjyoti-smart-bot-final.onrender.com'
